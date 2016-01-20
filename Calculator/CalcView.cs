@@ -11,10 +11,10 @@ namespace Calculator
 			public NumberButton(string num, Label label) {
 				this._label = label;
 				this.Text = num;
-				this.BorderColor = Color.Gray;
-				this.BorderWidth = 1;
-				this.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button));
-				this.TextColor = Color.Black;
+
+				this.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Button));
+				this.BackgroundColor = Color.FromHex("00A9BA");
+				this.TextColor = Color.White;
 
 				// event handler
 				this.Clicked += (sender, e) => {
@@ -29,10 +29,11 @@ namespace Calculator
 			public OperatorButton(string op, Label label) {
 				this._label = label;
 				this.Text = op;
-				this.BackgroundColor = Color.FromRgb(255, 156, 1);
-//				this.BorderWidth = 1;
+				this.BackgroundColor = Color.FromHex("FFB113");
 				this.TextColor = Color.White;
-				this.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button));
+//				this.BorderWidth = 1;
+//				this.BorderRadius = 1;
+				this.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Button));
 
 				// event handler
 				this.Clicked += (sender, e) => {
@@ -60,24 +61,39 @@ namespace Calculator
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
-				}
+				},
+				BackgroundColor = Color.White,
+				RowSpacing = 2,
+				ColumnSpacing = 2,
 			};
 
-			Content = calcGrid;
+			Frame frame = new Frame {
+				Content = calcGrid,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				Padding = new Thickness(5),
+				BackgroundColor = Color.White
+			};
+
+			Content = frame;
 			Padding = new Thickness (5, Device.OnPlatform (20, 0, 0), 5, 5);
 
 			Label viewLabel = new Label {
 				Text = "",
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.FromRgb(0.9, 0.9, 0.9),
+				BackgroundColor = Color.FromRgb(0.99, 0.99, 0.99),
+				TextColor = Color.Black
 			};
 
 			Button buttonAC = new Button {
 				Text = "AC",
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-				BorderColor = Color.Aqua,
-				BorderWidth = 1
+				BackgroundColor = Color.FromHex("BA0030"),
+				TextColor = Color.White,
+				FontAttributes = FontAttributes.Bold,
+//				BorderRadius = 1,
+//				BorderWidth = 1,
 			};
 			NumberButton button0 = new NumberButton ("0", viewLabel);
 			NumberButton button1 = new NumberButton ("1", viewLabel);
