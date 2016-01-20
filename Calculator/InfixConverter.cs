@@ -23,7 +23,7 @@ namespace Calculator
 				string tmp = "";
 				char c = infixString [i];
 
-				while ("0123456789".IndexOf (c) >= 0) {
+				while ("0123456789.".IndexOf (c) >= 0) {
 					tmp += c;
 					c = infixString [++i];
 				}
@@ -34,7 +34,6 @@ namespace Calculator
 				} else if ("+-/x".IndexOf(c) >= 0) {
 					// stack is empty, push operator
 					if (stack.Count == 0) {
-						Debug.WriteLine ("Pushing to empty stack");
 						stack.Push (c);
 					} else {
 						// if top of stack has higher precedence

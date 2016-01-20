@@ -47,7 +47,6 @@ namespace Calculator
 			}
 
 			answer = stack.Pop ().ToString ();
-			Debug.WriteLine ("ans = " + answer);
 
 		}
 	}
